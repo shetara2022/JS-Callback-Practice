@@ -1,62 +1,71 @@
 const inventory = newInventory()
 move(inventory).to(0, 0)
 
-//track the character's position
 const character = newImage('assets/green-character/static.gif')
-move(character).moveWithArrowKeys(100, 250)
-//move(newImage('assets/tree.png')).withArrowKeys(200, 450)
+//update src attribute to make character look like he's working
 
-
-//let direction = null;
-let x = 100;
-let y = 250;
-
- function moveCharacter() {
-//move character west; x should decrease
-if (direction === 'west'){
-    x = x - 1
+function handleDirectChange(direction) {
+if (direction === null) {
+    character .src = 'assets/green-character/static.gif'
+} 
+if (direction === 'west') {
+    character .src = 'assets/green-character/west.gif'
 }
-//move character north; y should decrease
-if(direction === 'north'){
-    y = y + 1
+if (direction === 'east') {
+    character .src = 'assets/green-character/east.gif'
 }
-//move character east; x should increase
-if(direction === 'east'){
-    x = x + 1 
+if (direction === 'north') {
+    character .src = 'assets/green-character/north.gif'
 }
-//move character south; y should decrease
-if(direction === 'south'){
-    y = y - 1
+if (direction === 'south') {
+    character .src = 'assets/green-character/south.gif'
 }
-character.style.left = x + 'px'
-character.style.bottom = y + 'px'
 }
+move(character).withArrowKeys(100, 250, handleDirectChange)
 
-//setInterval calls a function at specified intervals in milliseconds
-setInterval (moveCharacter, 1)
-//use event key (e) function to chec which key is pressed
-document.addEventListener('keydown', function(e){  
-    if(e.repeat) return;
+//use x and y coordinates to update character's position repeatedly
+// function moveCharacter(){ 
+//     if(direction === 'west'){
+//         x = x - 1
+//     }
+//     if(direction === 'north'){
+//         y = y + 1
+//     }
+//     if(direction === 'east'){
+//         x = x + 1
+//     }
+//     if(direction === 'south'){
+//         y = y - 1
+//     }
+//     character.style.left = x + 'px'
+//     character.style.bottom = y + 'px'
+// }
+// setInterval(moveCharacter, 1)
+// //setinterval functions takes a callback function as its first argument and a certain number of milliseconds the
+// //character moves as the second argument
 
-    if(e.key === 'ArrowLeft'){
-        direction = 'west'
-    }
-    if(e.key === 'ArrowUp'){
-        direction = 'north'
-    }
-    if(e.key === 'ArrowRight'){
-        direction = 'east'
-    }
-    if(e.key === 'ArrowDown'){
-        direction = 'south'
-    }
-})
- document.addEventListener('keyup', function(e){
-     direction = null
-})
+// //use an eventlistener to change direction using arrow key
+// //event(e) key changes the character's direction accordingly
+// document.addEventListener('keydown', function(e){
+//     if(e.repeat) return;
 
-
-move(newImage('assets/tree.png')).withArrowKeys(200, 450)
+//     if(e.key === 'ArrowLeft'){
+//         direction = 'west'
+//     }
+//     if(e.key === 'ArrowUp'){
+//         direction = 'north'
+//     }
+//     if(e.key === 'ArrowRight'){
+//         direction = 'east'
+//     }
+//     if(e.key === 'ArrowDown'){
+//         direction = 'south'
+//     }
+//     document.addEventListener('keyup', function(e){
+//         direction = null
+//     })
+// })
+move(newImage('assets/tree.png')).to(200, 450)
 move(newImage('assets/pillar.png')).to(350, 250)
 move(newImage('assets/pine-tree.png')).to(450, 350)
 move(newImage('assets/crate.png')).to(150, 350)
