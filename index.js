@@ -4,7 +4,7 @@ move(inventory).to(0, 0)
 const character = newImage('assets/green-character/static.gif')
 //update src attribute to make character look like he's working
 
-function handleDirectChange(direction) {
+function handleDirectionChange(direction) {
 if (direction === null) {
     character .src = 'assets/green-character/static.gif'
 } 
@@ -19,52 +19,10 @@ if (direction === 'north') {
 }
 if (direction === 'south') {
     character .src = 'assets/green-character/south.gif'
+    }
 }
-}
-move(character).withArrowKeys(100, 250, handleDirectChange)
+move(character).withArrowKeys(100, 250, handleDirectionChange)
 
-//use x and y coordinates to update character's position repeatedly
-// function moveCharacter(){ 
-//     if(direction === 'west'){
-//         x = x - 1
-//     }
-//     if(direction === 'north'){
-//         y = y + 1
-//     }
-//     if(direction === 'east'){
-//         x = x + 1
-//     }
-//     if(direction === 'south'){
-//         y = y - 1
-//     }
-//     character.style.left = x + 'px'
-//     character.style.bottom = y + 'px'
-// }
-// setInterval(moveCharacter, 1)
-// //setinterval functions takes a callback function as its first argument and a certain number of milliseconds the
-// //character moves as the second argument
-
-// //use an eventlistener to change direction using arrow key
-// //event(e) key changes the character's direction accordingly
-// document.addEventListener('keydown', function(e){
-//     if(e.repeat) return;
-
-//     if(e.key === 'ArrowLeft'){
-//         direction = 'west'
-//     }
-//     if(e.key === 'ArrowUp'){
-//         direction = 'north'
-//     }
-//     if(e.key === 'ArrowRight'){
-//         direction = 'east'
-//     }
-//     if(e.key === 'ArrowDown'){
-//         direction = 'south'
-//     }
-//     document.addEventListener('keyup', function(e){
-//         direction = null
-//     })
-// })
 move(newImage('assets/tree.png')).to(200, 450)
 move(newImage('assets/pillar.png')).to(350, 250)
 move(newImage('assets/pine-tree.png')).to(450, 350)
